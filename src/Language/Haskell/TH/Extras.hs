@@ -57,7 +57,7 @@ varsBoundInCon _ = []
 namesBoundInPat :: Pat -> [Name]
 namesBoundInPat (VarP name)             = [name]
 namesBoundInPat (TupP pats)             = pats >>= namesBoundInPat
-namesBoundInPat (ConP _ pats)           = pats >>= namesBoundInPat
+namesBoundInPat (ConP _ _ pats)           = pats >>= namesBoundInPat
 namesBoundInPat (InfixP p1 _ p2)        = namesBoundInPat p1 ++ namesBoundInPat p2
 namesBoundInPat (TildeP pat)            = namesBoundInPat pat
 namesBoundInPat (AsP name pat)          = name : namesBoundInPat pat
